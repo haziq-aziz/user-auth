@@ -1,6 +1,7 @@
 import * as Device from 'expo-device';
-import { Platform, StyleSheet, Text } from 'react-native';
+import { Platform, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { router } from "expo-router";
 
 import { AnimatedIcon } from '@/components/animated-icon';
 import { HintRow } from '@/components/hint-row';
@@ -55,8 +56,12 @@ export default function HomeScreen() {
           />
         </ThemedView>
 
-        {Platform.OS === 'web' && <WebBadge />}
-        <Text className="text-xl">Tests</Text>
+        {Platform.OS === "web" && <WebBadge />}
+        <TouchableOpacity
+          onPress={() => router.push("/login")}
+        >
+          <Text>Login Screen</Text>
+        </TouchableOpacity>
       </SafeAreaView>
     </ThemedView>
   );
