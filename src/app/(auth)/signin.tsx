@@ -1,11 +1,26 @@
-import { Text, View, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity, Alert } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
 
 import TextField from "@/components/ui/TextField";
 import CustomButton from "@/components/ui/CustomButton";
+import { useAuth } from "@/hooks/useAuth";
+import { useState } from "react";
 
 export default function LoginScreen() {
+  const { login } = useAuth();
+
+  const [email, setEmail] =  useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async () => {
+    try {
+      await login(email, password);
+    } catch (error: any) {
+      Alert.alert("Login Failed", error.message);
+    }
+  };
+
   return (
     <SafeAreaView className="flex-1 bg-white">
       <View className="flex-1 justify-center items-center p-6">
@@ -15,16 +30,24 @@ export default function LoginScreen() {
           label="Email"
           placeholder="Enter your email"
           keyboardType="email-address"
+          value={email}
+          onChangeText={setEmail}
         />
 
         <TextField
           label="Password"
           placeholder="Enter your password"
           isPassword
+          value={password}
+          onChangeText={setPassword}
         />
 
         <View className="w-full mb-4">
-          <CustomButton title="Log in" outline={false} />
+          <CustomButton 
+          title="Log in" 
+          outline={false}
+          onPress={handleLogin}  
+        />
         </View>
 
         <View className="w-full mb-4">
