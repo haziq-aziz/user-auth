@@ -19,6 +19,7 @@ export default function SignupScreen() {
   const handleSignup = async () => {
     try {
       await signup(username, email, password);
+      router.replace("/");
     } catch (error: any) {
       Alert.alert("Signup Failed", error.message);
     }
