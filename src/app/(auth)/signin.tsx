@@ -1,5 +1,6 @@
 import { Text, View, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { router } from "expo-router";
 
 import TextField from "@/components/ui/TextField";
 import CustomButton from "@/components/ui/CustomButton";
@@ -33,6 +34,7 @@ export default function LoginScreen() {
             bgColor="bg-white"
             borderColor="border-gray-200"
             textColor="text-black"
+            onPress={() => router.push("/signup")}
           />
         </View>
       </View>
