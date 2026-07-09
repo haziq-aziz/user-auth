@@ -33,9 +33,10 @@ npm install
 
 Create a .env file:
 
+'''
 EXPO_PUBLIC_SUPABASE_URL=
 EXPO_PUBLIC_SUPABASE_ANON_KEY=
-
+'''
 
 ### Run project
 
