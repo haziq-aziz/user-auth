@@ -30,6 +30,9 @@ export default function HomeScreen() {
               <Text className="text-xl font-medium">
                 {user?.user_metadata?.name}
               </Text>
+              <Text className="text-lg font-normal text-gray-500">
+                {user?.email}
+              </Text>
             </View>
           </View>
 
@@ -43,11 +46,22 @@ export default function HomeScreen() {
             </View>
 
             <View className="w-full mb-4">
-              <CustomButton title="" outline={false} />
+              <CustomButton title="Check In Mood" outline={false} />
             </View>
           </View>
-          <View className="bg-slate-100 h-48 justify-center px-6">
-            <View className="w-full h-24 bg-white rounded-lg" />
+          <View className="bg-slate-100 h-48 justify-center px-6 mb-4">
+            <View className="w-full h-24 bg-white rounded-xl p-4 items-center justify-center">
+              <Text className="text-lg text-gray-600">Word of the day module from API will be displays here</Text>
+            </View>
+          </View>
+          <View className="flex-1 mx-6 px-4 justify-center items-center">
+            <CustomButton
+              title="Logout"
+              outline={false}
+              bgColor="bg-red-600"
+              borderColor="border-red-800"
+              onPress={handleLogout}
+            />
           </View>
         </SafeAreaView>
       </View>
