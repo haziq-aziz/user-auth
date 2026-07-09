@@ -42,6 +42,7 @@ export default function SignupScreen() {
       await signup(username, email, password);
       router.replace("/");
     } catch (error: any) {
+      console.log("Login error:", error.message);
       Alert.alert("Signup Failed", error.message);
     }
   }
