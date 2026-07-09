@@ -17,6 +17,27 @@ export default function SignupScreen() {
   const [repeatPassword, setRepeatPassword] = useState("");
 
   const handleSignup = async () => {
+    if  (!username || !email || !password || !repeatPassword) {
+      Alert.alert("Signup Failed", "Please fill in all fields.");
+      return;
+    }
+
+    if (password !== repeatPassword) {
+      Alert.alert("Signup Failed", "Passwords do not match.");
+      return;
+    }
+
+    if (password.length < 6) { 
+      Alert.alert("Signup Failed", "Password must be at least 6 characters long.");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      Alert.alert("Signup Failed", "Please enter a valid email address.");
+      return;
+    }
+
     try {
       await signup(username, email, password);
       router.replace("/");
