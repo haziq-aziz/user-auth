@@ -18,7 +18,8 @@ export default function LoginScreen() {
       await login(email, password);
       router.replace("/");
     } catch (error: any) {
-      Alert.alert("Login Failed", error.message);
+      Alert.alert("Login Failed", "Invalid email or password.");
+      console.log("Login error:", error.message)
     }
   };
 
